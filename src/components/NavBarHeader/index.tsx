@@ -10,7 +10,7 @@ export default function NavBarHeader({ currentPage }: IProps) {
 
   return (
     <div className="w-full mx-[100px] flex justify-evenly">
-      <a href="/pageInit" className="flex text-5xl">
+      <a href="/" className="flex text-5xl">
         A<p>&</p>E
       </a>
       <div className="gap-10 ml-[400px] border-gray-20 flex items-center">

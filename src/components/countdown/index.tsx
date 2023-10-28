@@ -1,21 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { CountdownProps, TimeLeft } from "./CountDown.structure";
 
-interface CountdownProps {
-  targetDate: Date;
-}
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
-const CountDown: React.FC = () => {
-  const calculateTimeLeft = () => {
-    const difference = +new Date("2024-10-10") - +new Date();
-    let timeLeft: any = {};
+// refatorar código
+const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
+  const calculateTimeLeft = (): TimeLeft => {
+    const difference = +new Date(targetDate) - +new Date();
+    let timeLeft: TimeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
 
     if (difference > 0) {
       timeLeft = {
@@ -29,51 +25,34 @@ const CountDown: React.FC = () => {
     return timeLeft;
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [timeLeft, setTimeLeft] = React.useState<TimeLeft>(calculateTimeLeft());
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
-      setIsFlipped(!isFlipped);
     }, 1000);
+
     return () => clearTimeout(timer);
   });
 
-  const addLeadingZeros = (value: number) => {
-    if (value < 10) {
-      return `0${value}`;
-    }
-    return value;
-  };
-
   return (
-    <div className="flex flex-col justify-center bg-blue-400 items-center pb-[50px] mb-[90px] h-[200px]">
-      <span className="text-4xl my-[20px]">Contagem Regressiva</span>
-      <div
-        className={`perspective-1000 w-64 h-32 relative transition-transform transform ${
-          isFlipped ? "rotate-y-180" : ""
-        }`}
-      >
-        <div className="absolute w-full h-full bg-blue-500 backface-hidden ">
-          <p className="flex justify-center items-center h-full text-white text-3xl">
-            <span>{addLeadingZeros(timeLeft.days)}</span>:
-            <span>{addLeadingZeros(timeLeft.hours)}</span>:
-            <span>{addLeadingZeros(timeLeft.minutes)}</span>:
-            <span>{addLeadingZeros(timeLeft.seconds)}</span>
-          </p>
-        </div>
-        <div className="absolute w-full h-full bg-red-500 backface-hidden transform rotate-y-180">
-          <p className="flex justify-center items-center h-full text-white text-3xl">
-            <span>{addLeadingZeros(timeLeft.days)}</span>:
-            <span>{addLeadingZeros(timeLeft.hours)}</span>:
-            <span>{addLeadingZeros(timeLeft.minutes)}</span>:
-            <span>{addLeadingZeros(timeLeft.seconds)}</span>
-          </p>
-        </div>
+    <div className="flex flex-col gap-4 justify-center items-center mt-10  my-4 py-4">
+      <span className="text-2xl">
+        Contagem Regressiva para o grande momento 💘
+      </span>
+      <div className="flex flex-row">
+        {timeLeft &&
+          Object.keys(timeLeft).map((interval) => (
+            <div key={interval} className="flex flex-col text-center mr-4">
+              <div className="text-4xl font-semibold">
+                {timeLeft[interval as keyof TimeLeft]}
+              </div>
+              <div className="text-base">{interval}</div>
+            </div>
+          ))}
       </div>
     </div>
   );
 };
 
-export default CountDown;
+export default Countdown;
