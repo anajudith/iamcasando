@@ -24,7 +24,7 @@ export default function FormSendMessage() {
     <section className="bg-pink-100 w-full justify-center items-center flex content-center py-[60px]">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-[30px] w-[250px]"
+        className="flex flex-col items-center gap-[30px] w-[250px]"
       >
         <InputName name="name" label="Nome completo" type="text" />
         <InputName name="email" label="Email *" type="email" />
