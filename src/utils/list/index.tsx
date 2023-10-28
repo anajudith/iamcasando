@@ -16,7 +16,7 @@ export const headerMenus = [
     subItems: [
       {
         label: "Página inicial",
-        redirectTo: "/pageInit",
+        redirectTo: "/",
       },
       {
         label: "Nossa história",
