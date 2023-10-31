@@ -1,7 +1,7 @@
 "use client";
 import { headerMenus } from "@/utils/list";
 import React from "react";
-import { SidemenuButton } from "@/components";
+import { ButtonRedirectPage, SidemenuButton } from "@/components";
 import { IProps } from "./NavBarHeader.structure";
 import { useRouter } from "next/navigation";
 
@@ -27,6 +27,11 @@ export default function NavBarHeader({ currentPage }: IProps) {
             />
           );
         })}
+        <ButtonRedirectPage
+          className="bg-red-900 w-[180px]"
+          href=""
+          title="Fazer login"
+        />
       </div>
     </div>
   );
