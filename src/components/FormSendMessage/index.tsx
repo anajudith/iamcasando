@@ -1,7 +1,6 @@
 import React from "react";
 import { ButtonGeral, InputMessage, InputName } from "@/components";
 import Messages from "@/service/Messages";
-import { supabaseApi } from "@/service/Api";
 import { MessageContext } from "@/Context/Message/MessageContext";
 
 interface IMessage {
@@ -11,18 +10,21 @@ interface IMessage {
   email: string;
 }
 
+// Criar pasta para interface, estado para o error, e mensagem de sucesso de envio de mensagem.
+
 export default function FormSendMessage() {
   const { message, setMessage } = React.useContext(MessageContext);
 
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
-  // const [message, setMessage] = React.useState("");
-  const [error, setError] = React.useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await addNote(message, name, email);
+      setName("");
+      setEmail("");
+      setMessage("");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -31,14 +33,6 @@ export default function FormSendMessage() {
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     setMessage(newValue);
-  };
-
-  const fetchNotes = async () => {
-    // const { data } = await supabaseApi.from("messages").select("*");
-    // if (data) {
-    //   const messages = data.map((item) => item.message).join("\n");
-    //   setMessage(messages);
-    // }
   };
 
   const addNote = React.useCallback(
@@ -57,14 +51,7 @@ export default function FormSendMessage() {
           newNote.email,
           newNote.message
         );
-        // const responseGet = await Messages.getMessage();
-        // console.log(responseGet, "peguei aqui");
 
-        // if (!responseGet) {
-        //   setError("Deu erro");
-        // }
-
-        await fetchNotes();
         return response;
       } catch (error) {
         console.error("Error:", error);
@@ -90,7 +77,7 @@ export default function FormSendMessage() {
         />
         <InputName
           name="email"
-          label="Email *"
+          label="Email"
           type="email"
           value={email}
           onChange={(e: { target: { value: React.SetStateAction<string> } }) =>
