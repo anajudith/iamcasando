@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rajdhani } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components";
+import { MessageProvider } from "@/Context/Message/MessageContext";
 
 const inter = Rajdhani({
   subsets: ["latin"],
@@ -22,10 +23,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">{children}</main>
-        </div>
+        <main className="">
+          <MessageProvider>
+            <>
+              {/* Aqui eu coloquei um pb porque o header está fixo, e acontece que o meu
+          children que é o elemento das outras páginas, ele não está
+          considerando o meu header. */}
+              <header className="pb-[100px]">
+                <Header />
+              </header>
+              {children}
+            </>
+          </MessageProvider>
+        </main>
       </body>
     </html>
   );
