@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import banner from "@/assets/images/banner.png";
@@ -5,18 +6,17 @@ import Countdown from "@/components/Countdown";
 import folha from "@/assets/images/folha.png";
 import { ButtonRedirectPage, SubTitleCommon, TitleCommon } from "@/components";
 
+const descriptionText =
+  "Aqui vamos contar à vocês, queridos amigos e familiares, os momentos mais marcantes da nossa história de amor. A contagem regressiva começa, o frio na barriga e toda a ansiedade do dia mais esperado de nossas vidas nos enche de alegria em tê-los ao nosso lado. Vamos juntos nesse grande sonho, o dia em que uniremos nossas almas e corpos para sempre, o dia do nosso casamento.";
+
 function PageInit() {
   const targetDate = "2024-10-19T00:00:00";
   return (
     <div className="flex flex-col pb-[100px]">
       <Image
-        className=" w-full border-r border-gray-20 flex justify-start items-center bg-center bg-cover"
+        className="w-full border-r border-gray-20 flex justify-start items-center bg-center bg-cover"
         src={banner}
         alt="Apresentation of the pair"
-        // automatically provided
-        // automatically provided
-        // blurDataURL="data:..." automatically provided
-        // placeholder="blur" // Optional blur-up while loading
       />
       <Countdown targetDate={targetDate} />
       <div className="flex flex-col justify-center items-center pt-[40px] gap-8">
@@ -30,12 +30,7 @@ function PageInit() {
           className="py-[60px]"
         />
         <span className="px-[130px] leading-8 font-semibold text-justify">
-          Aqui vamos contar à vocês, queridos amigos e familiares, os momentos
-          mais marcantes da nossa história de amor. A contagem regressiva
-          começa, o frio na barriga e toda a ansiedade do dia mais esperado de
-          nossas vidas nos enche de alegria em tê-los ao nosso lado. Vamos
-          juntos nesse grande sonho, o dia em que uniremos nossas almas e corpos
-          para sempre, o dia do nosso casamento.
+          {descriptionText}
         </span>
         <TitleCommon
           className={"pt-[60px] pb-[30px]"}
@@ -55,7 +50,9 @@ function PageInit() {
         <span className="font-semibold">
           Nenhuma mensagem recebida. Deixe a primeira!!!
         </span>
-        <ButtonRedirectPage href="/message" />
+        <div className="w-[180px] h-[80px]">
+          <ButtonRedirectPage href="/message" title="Envie sua mensagem" />
+        </div>
       </div>
     </div>
   );
