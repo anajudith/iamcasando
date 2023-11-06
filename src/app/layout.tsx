@@ -3,6 +3,7 @@ import { Rajdhani } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components";
 import { MessageProvider } from "@/Context/Message/MessageContext";
+import Providers from "@/components/SingButton/Providers";
 
 const inter = Rajdhani({
   subsets: ["latin"],
@@ -24,17 +25,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main className="">
-          <MessageProvider>
-            <>
-              {/* Aqui eu coloquei um pb porque o header está fixo, e acontece que o meu
+          <Providers>
+            <MessageProvider>
+              <>
+                {/* Aqui eu coloquei um pb porque o header está fixo, e acontece que o meu
           children que é o elemento das outras páginas, ele não está
           considerando o meu header. */}
-              <header className="pb-[100px]">
-                <Header />
-              </header>
-              {children}
-            </>
-          </MessageProvider>
+                <header className="pb-[100px]">
+                  <Header />
+                </header>
+                {children}
+              </>
+            </MessageProvider>
+          </Providers>
         </main>
       </body>
     </html>

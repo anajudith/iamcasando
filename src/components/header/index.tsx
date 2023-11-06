@@ -1,12 +1,11 @@
 import React from "react";
 import { NavBarHeader } from "@/components";
 
-const titles = ["Páginas", "Presentes", "Confirmar Presença", "language"];
+const titles = ["Páginas", "Presentes", "Confirmar Presença"];
 
 export default function Header() {
   return (
-    // Se adicionar o z-50, o formulario para de ficar sobreposto ao cabeçalho e aos submenus.
-    <div className="flex w-full fixed h-[100px] bg-slate-100 justify-center gap-96 text-center items-center">
+    <div className="flex z-50 w-full fixed h-[100px] bg-slate-100 justify-center gap-96 text-center items-center">
       <NavBarHeader />
     </div>
   );

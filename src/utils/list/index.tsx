@@ -56,14 +56,4 @@ export const headerMenus = [
       },
     ],
   },
-  {
-    label: "Language",
-    redirectTo: "/about",
-    subItems: [
-      {
-        label: "apenas teste",
-        redirectTo: "/billet/generate",
-      },
-    ],
-  },
 ] satisfies IPagesMenu[];

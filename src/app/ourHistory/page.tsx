@@ -8,7 +8,7 @@ const descriptionText =
 
 function OurHistory() {
   return (
-    <div className="flex flex-col bg-red-400 justify-center items-center">
+    <div className="flex flex-col justify-center items-center">
       <TitleCommon title="Nossa história" className="pt-[90px]" />
       <SubTitleCommon
         subTitle="COMO É BOM RECORDAR! CONHEÇA OS DETALHES DA NOSSA CAMINHADA ATÉ ESSE GRANDE SONHO DO NOSSO CASAMENTO."
