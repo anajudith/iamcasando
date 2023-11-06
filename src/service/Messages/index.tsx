@@ -1,6 +1,6 @@
 import { supabaseApi } from "../Api";
 
-interface INotes {
+interface IMessages {
   id: string;
   message: string;
   name: string;
@@ -10,16 +10,14 @@ interface INotes {
 class Messages {
   /**
    * @description Signing in
-   * @returns {Promise<INotes[] | false>}
+   * @returns {Promise<IMessages[] | false>}
    */
 
-  async getMessage(): Promise<INotes[] | false> {
+  async getMessage(): Promise<IMessages[] | false> {
     try {
       const { data } = await supabaseApi.from("messages").select();
 
       if (data) {
-        console.log(data);
-        console.log(data, "messagens");
         return data;
       } else {
         return false;
@@ -34,7 +32,7 @@ class Messages {
     name: string,
     email: string,
     message: string
-  ): Promise<INotes[] | false> {
+  ): Promise<IMessages[] | false> {
     try {
       const { data } = await supabaseApi
         .from("messages")
@@ -51,7 +49,7 @@ class Messages {
     }
   }
 
-  async deleteMessage(id: string): Promise<INotes[] | false> {
+  async deleteMessage(id: string): Promise<IMessages[] | false> {
     try {
       const { data } = await supabaseApi.from("messages").delete().eq("id", id);
 
@@ -68,7 +66,7 @@ class Messages {
 
   //   async updateMessage(
   //     noteId: string,
-  //   ): Promise<INotes[] | false> {
+  //   ): Promise<IMessages[] | false> {
   //     try {
   //       const { data } = await supabaseApi
   //         .from("note")

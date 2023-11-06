@@ -5,7 +5,11 @@ export interface Message {
   email: string;
 }
 
-export type MessageContextValue = {
-  message: string;
-  setMessage: React.Dispatch<React.SetStateAction<string>>;
-};
+export interface IMessageContext {
+  message: Message;
+  setMessage: React.Dispatch<React.SetStateAction<Message>>;
+}
+
+export interface IMessageProvider {
+  children: React.ReactNode;
+}

@@ -9,6 +9,7 @@ import InputName from "./InputName";
 import InputMessage from "./InputMessage";
 import FormSendMessage from "./FormSendMessage";
 import ButtonGeral from "./ButtonGeral";
+import SingIn from "./SingButton";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   InputMessage,
   FormSendMessage,
   ButtonGeral,
+  SingIn,
 };
