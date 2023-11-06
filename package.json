@@ -12,6 +12,7 @@
     "@rumess/react-flip-countdown": "^1.2.6",
     "@supabase/supabase-js": "^2.38.4",
     "next": "13.5.6",
+    "next-auth": "^4.24.4",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0"
