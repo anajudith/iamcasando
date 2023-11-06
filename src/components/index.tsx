@@ -3,7 +3,7 @@ import SidemenuButton from "./SubMenuOptions";
 import NavBarHeader from "./NavBarHeader";
 import TitleCommon from "./TitleCommon";
 import SubTitleCommon from "./SubTitleCommon";
-import Countdown from "./Countdown";
+import CountDays from "./Countdown";
 import ButtonRedirectPage from "./ButtonRedirectPage";
 import InputName from "./InputName";
 import InputMessage from "./InputMessage";
@@ -17,7 +17,7 @@ export {
   NavBarHeader,
   TitleCommon,
   SubTitleCommon,
-  Countdown,
+  CountDays,
   ButtonRedirectPage,
   InputName,
   InputMessage,

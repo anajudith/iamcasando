@@ -2,7 +2,7 @@
 import React from "react";
 import { CountdownProps, TimeLeft } from "./CountDown.structure";
 
-export default function Countdown({ targetDate }: CountdownProps) {
+export default function CountDays({ targetDate }: CountdownProps) {
   const calculateTimeLeft = React.useCallback((): TimeLeft => {
     const difference = +new Date(targetDate) - +new Date();
     let timeLeft: TimeLeft = {
