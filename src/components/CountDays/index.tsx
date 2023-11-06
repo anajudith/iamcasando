@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { CountdownProps, TimeLeft } from "./CountDown.structure";
+import { CountdownProps, TimeLeft } from "./CountDays.structure";
 
 export default function CountDays({ targetDate }: CountdownProps) {
   const calculateTimeLeft = React.useCallback((): TimeLeft => {
