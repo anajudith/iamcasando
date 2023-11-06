@@ -32,7 +32,6 @@ export default function NavBarHeader({ currentPage }: IProps) {
             />
           );
         })}
-        <SingIn />
       </div>
     </div>
   );

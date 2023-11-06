@@ -46,11 +46,11 @@ export default function SidemenuButton({
   }, [subMenus, handleNavigation]);
 
   return (
-    <div ref={node} className="w-full relative items-start select-none">
+    <div ref={node} className="w-2/2 relative items-start select-none">
       <div className="h-[51px] flex justify-center items-center">
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="h-full flex justify-start items-center transition-all relative gap-3  cursor-pointer"
+          className="h-full  flex justify-start items-center transition-all relative gap-3  cursor-pointer"
         >
           <span className={`font-bold`}>{label}</span>
           {subMenus.length > 0 && (

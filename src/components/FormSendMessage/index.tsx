@@ -103,16 +103,10 @@ export default function FormSendMessage() {
 
   return (
     <section className="bg-pink-100 w-full justify-center gap-10 items-center flex content-center py-[60px]">
-      {session?.user ? (
-        <span className="text-5xl w-[600px] text-start">
-          Deixe sua mensagem especial para os noivos, compartilhando seus
-          desejos de felicidade e amor.
-        </span>
-      ) : (
-        <span className="text-5xl w-[500px] text-start">
-          Faça o login para enviar uma mensagem especial aos noivos!
-        </span>
-      )}
+      <span className="text-4xl w-[600px] text-start">
+        Deixe sua mensagem especial para os noivos, compartilhando seus desejos
+        de felicidade e amor.
+      </span>
 
       <form
         onSubmit={handleSubmit}
@@ -123,7 +117,6 @@ export default function FormSendMessage() {
           label="Nome completo"
           type="text"
           value={name}
-          disabled={!session}
           onChange={(e) => setName(e.target.value)}
         />
         <InputName
@@ -131,7 +124,6 @@ export default function FormSendMessage() {
           label="Email"
           type="email"
           value={email}
-          disabled={!session}
           onChange={(e) => setEmail(e.target.value)}
         />
         <InputMessage
@@ -139,16 +131,11 @@ export default function FormSendMessage() {
           label="Mensagem"
           type="text"
           value={text}
-          disabled={!session}
           onChange={(e) => setText(e.target.value)}
           className="h-[150px]"
         />
 
-        <ButtonGeral
-          type="submit"
-          title="Enviar mensagem"
-          disabled={!session}
-        />
+        <ButtonGeral type="submit" title="Enviar mensagem" />
       </form>
     </section>
   );
