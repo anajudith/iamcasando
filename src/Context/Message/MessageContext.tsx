@@ -1,21 +1,38 @@
 "use client";
 import React from "react";
-import { Message, MessageContextValue } from "./MessageContext.structure";
+import {
+  Message,
+  IMessageContext,
+  IMessageProvider,
+} from "./MessageContext.structure";
 
-export const MessageContext = React.createContext<MessageContextValue>(null!);
+const MessageContext = React.createContext({} as IMessageContext);
 
-export const MessageProvider = ({ children }: { children: JSX.Element }) => {
-  //   const [message, setMessage] = React.useState<Message[]>([]);
-  const [message, setMessage] = React.useState("" as string);
-
-  const contextValue: MessageContextValue = {
-    message,
-    setMessage,
-  };
+function MessageProvider({ children }: IMessageProvider) {
+  const [message, setMessage] = React.useState({} as Message);
 
   return (
-    <MessageContext.Provider value={contextValue}>
+    <MessageContext.Provider
+      value={React.useMemo(
+        () => ({
+          message,
+          setMessage,
+        }),
+        [message, setMessage]
+      )}
+    >
       {children}
     </MessageContext.Provider>
   );
-};
+}
+
+function useAddress() {
+  const context = React.useContext(MessageContext);
+  if (!context) {
+    throw new Error("useAddress must be used within a SettingsProvider");
+  }
+
+  return context;
+}
+
+export { MessageProvider, useAddress, MessageContext };

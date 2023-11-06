@@ -6,7 +6,7 @@ export default function InputMessage({
   value,
   onChange,
   type = "text",
-  disabled,
+  disabled = false,
   className,
 }: IProps) {
   return (
@@ -16,6 +16,7 @@ export default function InputMessage({
         name={name}
         value={value}
         onChange={onChange}
+        disabled={disabled}
         className={`w-full peer block py-2.5 px-4 text-base text-slate-700 font-semibold bg-transparent ${
           disabled ? "border-gray-300" : "border-gray-400"
         } border-[1px] border-solid focus:outline-none focus:ring-0 focus:border-[#FF6464] ${className}`}

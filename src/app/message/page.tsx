@@ -14,6 +14,7 @@ export default function Message() {
       />
       <Image
         src={folha}
+        rel="preload"
         alt="folha ao centro"
         width={170}
         height={170}
